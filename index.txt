@@ -1,0 +1,48 @@
+1. requests library, jo HTTP requests k through web se data retrieve kry ga
+
+2. bs4 library, is se hum BeautifulSoup class import kryn gy ta k html document parsing kr skey
+
+3. pandas library - jo alias provide krta h like pd pandas - jis se hum data extract kryn gy aur save
+
+4. url - reference website ka url jisse data extarct krna
+
+5. r = requests.get(url): yeh HTTP GET request kry ga jo URL h and store the server response in r variable
+
+6. soup - html code ko parse kr k and readable form me likhy ga - easy to navigate and search content element
+
+7. soup.find_all - is se jo specific need hogi wo scrap hogi like headings tables - Headings
+
+8. enumerate() - yeh is liye use kiya h ta k indexes b sth print ho data k
+
+9. table.find_all('tr') - yeh table ki rows find kry ga then rows variable me store
+
+10. headings[i].text.strip() if i < len(headings) else f"Table {i+1}": 
+    yeh headings list me se table heading store kry ga. heading variable me
+
+11. table.find_all('tr'): current table me se rows find kr k unko rows variable me store kryga .
+
+12. [th.text.strip() for th in rows[0].find_all('th')]:
+    ist row se table header extract  hoga jitny b 'th' hon gy and clean the text and store in headers
+    
+13. table_data = []: - is empty list me jo b data hoga wo store hoga 
+
+14. for row in rows[1:]:: - loop start from index one 
+
+15. cells = row.find_all('td'):   - current row me se table data cells find 
+
+16. row_data = [cell.text.strip() for cell in cells]:   - strip() yeh jo b back and forth spaces hogi wo remove kr k just text extract
+
+17. table_data.append(row_data):    - append jesy jesy loop cly ge data store hota jaye ga list me
+
+18. df = pd.DataFrame(table_data, columns=headers):   upr jo headers and table_data waha se data ko sheet me import - pandas Dataframe() 
+
+19. clean_heading = heading.replace(' ', '_').replace('/', '_').replace('\\', '_'):    - repalce kr de spaces / \\ with _.
+
+20. CricInfo = f"{clean_heading}.csv":  clean heading se csv file name construct and saved as csv
+
+21. df.to_csv(CricInfo, index=False): Dataframe se csv me data save kry ga jo filename crickifno se generate hoga.
+
+22. index=False - agar yeh true hoga to index me 0 b ayga 
+
+23. print(f"Saved: {CricInfo}"): - just to show that files has been saved.
+
